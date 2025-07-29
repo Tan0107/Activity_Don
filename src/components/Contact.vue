@@ -1,5 +1,5 @@
 <template>
-	<h1 class="text-center my-4 pt-5" id="contact">Contact</h1>
+    <h1 class="text-center my-4 pt-5" id="contact">Contact</h1>
         <div class="contact-section">
             <div class="row align-items-center mt-4">
                 <div class="col-md-6 map-container">
@@ -25,9 +25,9 @@
                             </div>
                             <button type="submit" class="submit-btn pl-5 pr-5" :disabled="isLoading">{{isLoading ? "Sending..." : "Submit"}}</button>
                         </div>
-                        
-                        <div class="d-flex justify-content-end  mt-2">
-                                <div ref="recaptchaContainer"></div>
+
+                        <div class="d-flex justify-content-end mt-2">
+                            <div ref="recaptchaContainer"></div>
                         </div>
                     </form>
                     
@@ -38,25 +38,27 @@
 </template>
 
 <script setup>
-    
-    import { ref, onMounted, onBeforeUnMount }  from 'vue';
+
+    import { ref, onMounted, onBeforeUnmount } from 'vue';
     import { Notyf } from 'notyf';
     import 'notyf/notyf.min.css';
 
     const notyf = new Notyf();
-    const  WEB3FORMS_ACCESS_KEY ="7b2d9ab7-d2ba-4ebb-a035-7a0ea66439fa";
+    const WEB3FORMS_ACCESS_KEY = "d26c1c65-3e9d-4f1d-8d5e-0854c49430dc"; //replace with your access key
 
-    const subject = ref("");
+    const subject = "New message from portfolio contact form";
+
+    const name = ref("");
     const email = ref("");
     const message = ref("");
-    
+
     const isLoading = ref(false);
 
     // The submitForm() handler function sends the form data to web3forms and displays success or failure notifications toast.
     const submitForm = async () => {
 
-        If (!recaptchaToken.value){
-            notyf.error('Please verify that you are not a robot');
+        if(!recaptchaToken.value){
+            notyf.error('Please verify that you are not a robot.');
             return;
         }
 
@@ -98,8 +100,8 @@
             // Set the loading state to false.
             isLoading.value = false;
             notyf.error("Failed to send message.");
-        }  finally {
-            resetRecaptch();
+        } finally {
+            resetRecaptcha();
         }
     }
 
@@ -109,7 +111,7 @@
  * 
  */
 
-const SITE_KEY = '6LdetZIrAAAAAMPI1zhPvNXfldbj0YkGsRrNc4Lm';  // Replace with your site key
+const SITE_KEY = '6LdmvpIrAAAAAIg-hwItyWQzsFbJ_FMTYZQuT_-8';  // Replace with your site key
 
 const recaptchaContainer = ref(null);
 const recaptchaWidgetId = ref(null);
@@ -166,5 +168,5 @@ onMounted(() => {
     clearInterval(interval);
   });
 });
-
+    
 </script>
